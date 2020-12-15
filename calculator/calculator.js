@@ -58,7 +58,7 @@ function calculateMonthlyPayment(values) {
   const i = (values.rate / 100) / 12;
   payment = (p * i)/(1 - Math.pow((1+i),-n));
 
-  payment = Math.round(payment*100)/100;
+  payment = payment.toFixed(2);
   return payment;
 }
 
