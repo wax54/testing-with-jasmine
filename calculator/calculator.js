@@ -68,5 +68,5 @@ function calculateMonthlyPayment(values) {
 */
 function updateMonthly(monthly) {
   const monthlyspan = document.getElementById('monthly-payment');
-  monthlyspan.innerText = monthly; 
+  monthlyspan.innerText = "$"+monthly; 
 }
