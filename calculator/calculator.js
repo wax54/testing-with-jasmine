@@ -29,7 +29,7 @@ document.getElementById("loan-rate").value = rate;
 function setupIntialValues() {
 
   // Put some default values in the inputs
-  setCurrentUIValues(600000, 30, 2);
+  setCurrentUIValues(600000, 10, 1.2);
 
   // Call a function to calculate the current monthly payment
   update();
@@ -44,13 +44,22 @@ function update() {
   updateMonthly(payment);
 
 }
-
-// Given an object of values (a value has amount, years and rate ),
-// calculate the monthly payment.  The output should be a string
-// that always has 2 decimal places.
+/*
+* Given an object of values (a value has amount, years and rate ),
+* calculate the monthly payment.  The output should be a string
+* that always has 2 decimal places.
+*/
 function calculateMonthlyPayment(values) {
+  //loading the amount into the principle variable for the equation.
+  const p = values.amount;
+  //to make in num of months instead of years
+  const n = values.years * 12;
+  //to make yearly rate a percentage and also per month instead of per year
+  const i = (values.rate / 100) / 12;
+  payment = (p * i)/(1 - Math.pow((1+i),-n));
 
-  return values.amount+'';
+  payment = Math.round(payment*100)/100;
+  return payment;
 }
 
 /* 
