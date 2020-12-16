@@ -1,5 +1,10 @@
 
 // accepts 'tipAmt', 'billAmt', 'tipPercent' and sums total from allPayments objects
+/**
+ * 
+ * @param { string } type This param can be 'tipAmt' or 'billAmt'
+ * @returns { number } This Function returns the total from allpayments of type above
+ */
 function sumPaymentTotal(type) {
   let total = 0;
 
