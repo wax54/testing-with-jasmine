@@ -48,6 +48,7 @@ function update() {
     //update the UI
     updateMonthly(payment);
   }else {
+    //I'd love to do something different here...
     updateMonthly('Invalid Input');
   }
 
