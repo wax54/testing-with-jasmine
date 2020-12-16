@@ -9,3 +9,6 @@ it("should return a result with 2 decimal places", function() {
 it("should handle decimal places in all inputs", function(){
   expect(calculateMonthlyPayment({amount: 1000.45, rate: 4.5764, years: 15.1765})).toEqual("7.63");
 })
+it("should return nan when given a Non-number in", function(){
+  expect(calculateMonthlyPayment({amount: 600000, rate: 12, years: 'july'})).toBe(false);
+})
