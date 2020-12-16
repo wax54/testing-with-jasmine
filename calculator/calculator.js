@@ -40,9 +40,16 @@ function setupIntialValues() {
 // Update the monthly payment
 function update() {
   const values = getCurrentUIValues();
-  const payment = calculateMonthlyPayment(values);
-  console.log(payment);
-  updateMonthly(payment);
+  
+  //checking if all the values are numbers
+  if(values.amount && values.rate && values.years){
+    //calculates the monthly payments
+    const payment = calculateMonthlyPayment(values);
+    //update the UI
+    updateMonthly(payment);
+  }else {
+    updateMonthly('Invalid Input');
+  }
 
 }
 /*
@@ -57,12 +64,16 @@ function calculateMonthlyPayment(values) {
   const n = values.years * 12;
   //to make yearly rate a percentage and also per month instead of per year
   const i = (values.rate / 100) / 12;
+  //the Magic Equation
+  let payment = (p * i)/(1 - Math.pow((1+i),-n));
+  //if payment is NaN, return false
+  if(!payment){
+    return false;
+  }
 
-  console.log("p,n,i",{p,n,i});
-  payment = (p * i)/(1 - Math.pow((1+i),-n));
-  console.log(payment);
+  //round the payment to 2 decmal places 
+  //  and convert it to a string
   payment = payment.toFixed(2);
-  console.log(payment);
   return payment;
 }
 
