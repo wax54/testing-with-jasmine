@@ -1,4 +1,4 @@
-describe("Servers test (with setup and tear-down)", function() {
+describe("Servers test", function() {
   beforeEach(function () {
     // initialization logic
     serverNameInput.value = 'Alice';
@@ -8,7 +8,6 @@ describe("Servers test (with setup and tear-down)", function() {
   describe("submitServerInfo()", function() {
    
     it("should be able to handle spaces in server names", function () {
-
       serverNameInput.value = 'Gene Barker';
       submitServerInfo();
 
@@ -17,23 +16,18 @@ describe("Servers test (with setup and tear-down)", function() {
     });
 
     it("should add a new server to allServers on submitServerInfo()", function () {
-
       expect(Object.keys(allServers).length).toEqual(1);
       expect(allServers['server' + serverId].serverName).toEqual('Alice');
     });
     
     it("should reset the serverNameInput to an empty string", function(){
-
       expect(serverNameInput.value).toEqual('');
     });
   });
 
   describe("updateServerTable()", function() {
 
-
     it("should update the serverTbody to include the new server", function(){
-      submitServerInfo();
-
       expect(serverTbody.innerText).toEqual('Alice	$0.00');
     });
   });
