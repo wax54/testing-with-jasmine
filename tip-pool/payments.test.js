@@ -69,6 +69,59 @@ describe("payments Tests", function() {
             tipAmtInput.value = '';
         });
     });
-    
-    
+
+
+    describe("appendPaymentTable tests", function(){
+
+        it("should append a new tr on paymentTbody",function(){
+            const payment = {billAmt:'60',tipAmt:'5',tipPercent:8};
+            appendPaymentTable(payment);
+
+            expect(paymentTbody.querySelectorAll('tr').length).toBe(1);
+            appendPaymentTable(payment);
+            expect(paymentTbody.querySelectorAll('tr').length).toBe(2);
+        });
+
+        it("should add the 'payment'+paymentId as the id for the new row",function(){
+            paymentId = 68;
+            const payment = {billAmt:'60',tipAmt:'5',tipPercent:8};
+            appendPaymentTable(payment);
+            expect(paymentTbody.querySelector('tr').id).toEqual('payment68');
+        });
+        
+        it("should fill out the row with the inputed payment details",function(){
+            const payment = {billAmt:'60',tipAmt:'5',tipPercent:8};
+            appendPaymentTable(payment);
+            const row = paymentTbody.querySelector('tr');
+            expect(row.children[0].innerText).toEqual('$60');
+            expect(row.children[1].innerText).toEqual('$5');
+            expect(row.children[2].innerText).toEqual('8%');
+        });
+
+
+        afterEach(function(){
+            paymentTbody.innerText = '';
+            paymentId = 0;
+        });
+    });
+  
+    describe("updateSummary tests", function(){
+        it("should put correct totals in summaryTds0-2",function(){
+            allPayments = {
+                payment1: {billAmt: "60", tipAmt: "5", tipPercent: 8},
+                payment2: {billAmt: "78", tipAmt: "1", tipPercent: 1},
+                payment3: {billAmt: "10", tipAmt: "100", tipPercent: 1000},
+                payment4: {billAmt: "51", tipAmt: "6", tipPercent: 12},
+                payment5: {billAmt: "710", tipAmt: "0", tipPercent: 0}
+                };
+            updateSummary();
+            expect(summaryTds[0].innerText).toEqual('$909');
+            expect(summaryTds[1].innerText).toEqual('$112');
+            expect(summaryTds[2].innerText).toEqual('204%'); 
+            
+            //clean up
+            allPayments = {}; 
+            updateSummary();
+        });
+    });
 });
