@@ -41,6 +41,7 @@ function setupIntialValues() {
 function update() {
   const values = getCurrentUIValues();
   const payment = calculateMonthlyPayment(values);
+  console.log(payment);
   updateMonthly(payment);
 
 }
@@ -56,9 +57,12 @@ function calculateMonthlyPayment(values) {
   const n = values.years * 12;
   //to make yearly rate a percentage and also per month instead of per year
   const i = (values.rate / 100) / 12;
-  payment = (p * i)/(1 - Math.pow((1+i),-n));
 
+  console.log("p,n,i",{p,n,i});
+  payment = (p * i)/(1 - Math.pow((1+i),-n));
+  console.log(payment);
   payment = payment.toFixed(2);
+  console.log(payment);
   return payment;
 }
 
