@@ -25,7 +25,7 @@ describe("Servers test", function() {
     });
   });
 
-  describe("updateServerTable()", function() {
+  describe("updateServerTable tests", function() {
 
     it("should update the serverTbody to include the new server", function(){
       expect(serverTbody.innerText).toEqual('Alice	$0.00');
