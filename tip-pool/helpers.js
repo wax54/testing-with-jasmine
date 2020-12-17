@@ -18,6 +18,7 @@ function sumPaymentTotal(type) {
 
 /**
  * converts the bill and tip amount into a tip percent
+ * 
  * @param { number } billAmt This param can be any number except 0
  * @param { number } tipAmt This param can be any number including 0 
  * @returns { number } This is the tip percent as a whole number value
