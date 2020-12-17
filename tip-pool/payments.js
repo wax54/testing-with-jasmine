@@ -32,6 +32,9 @@ function submitPaymentInfo(evt) {
 
 // createCurPayment() will return undefined with negative or empty inputs
 // positive billAmt is required but tip can be 0
+/**
+ * 
+ */
 function createCurPayment() {
   let billAmt = billAmtInput.value;
   let tipAmt = tipAmtInput.value;
