@@ -10,8 +10,12 @@ let paymentId = 0;
 
 paymentForm.addEventListener('submit', submitPaymentInfo);
 
-// Add a curPayment object to allPayments, update html and reset input values
-function submitPaymentInfo(evt) {
+/**
+ *  Add a curPayment object from user input to allPayments, update html and reset input values
+ * 
+ *  @param { event } evt a not required event object
+ */
+ function submitPaymentInfo(evt) {
   if (evt) evt.preventDefault(); // when running tests there is no event
 
   let curPayment = createCurPayment();
@@ -30,9 +34,11 @@ function submitPaymentInfo(evt) {
   }
 }
 
-// createCurPayment() will return undefined with negative or empty inputs
-// positive billAmt is required but tip can be 0
-/**
+
+/** 
+ * This Function creates a payment object with the current values in billAmt and tipAmt
+ * this function will return undefined with negative or empty inputs
+ * positive billAmt is required but tip can be 0
  * 
  */
 function createCurPayment() {
@@ -50,7 +56,10 @@ function createCurPayment() {
   }
 }
 
-// Create table row element and pass to appendTd with input value
+/**
+ *  Create table row element and pass to appendTd with input values from curPayment
+ *  @param { [string,string,number] } curPayment an array that should contain billAmt, tipAmt, and tipPercent
+ */
 function appendPaymentTable(curPayment) {
   let newTr = document.createElement('tr');
   newTr.id = 'payment' + paymentId;
@@ -62,7 +71,10 @@ function appendPaymentTable(curPayment) {
   paymentTbody.append(newTr);
 }
 
-// Create table row element and pass to appendTd with calculated sum of all payment
+/** 
+ * places the sum of the bills, tips, and the average tip percent into their respective tds
+ *  
+ */
 function updateSummary() {
   let tipPercentAvg;
   let paymentTotal = sumPaymentTotal('tipPercent');
