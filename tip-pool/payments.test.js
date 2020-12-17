@@ -6,6 +6,7 @@ describe("payments Tests", function() {
             tipAmtInput.value = 5;
             submitPaymentInfo();
         });
+        
         it("should add the bill and tip inputs to allpayments", function(){
             expect(Object.keys(allPayments).length).toEqual(1);
             expect(allPayments['payment1'].billAmt).toEqual('60');
@@ -17,6 +18,7 @@ describe("payments Tests", function() {
         it("should update the paymentTbody to include the new payment", function(){
             expect(paymentTbody.innerText).toEqual('$60	$5	8%');
         });
+
         afterEach(function(){
             paymentTbody.innerText ='';
             allPayments = {};
@@ -30,6 +32,7 @@ describe("payments Tests", function() {
             billAmtInput.value = 60;
             tipAmtInput.value = 5;
         });
+
         it("should return a valid payment object",function(){
             const aPaymentObject = createCurPayment();
             expect(aPaymentObject.billAmt).toEqual('60');
@@ -64,6 +67,7 @@ describe("payments Tests", function() {
             billAmtInput.value = '';
             expect(createCurPayment()).toBe(undefined);
         });
+
         afterAll(function(){
             billAmtInput.value = '';
             tipAmtInput.value = '';
@@ -81,14 +85,12 @@ describe("payments Tests", function() {
             appendPaymentTable(payment);
             expect(paymentTbody.querySelectorAll('tr').length).toBe(2);
         });
-
         it("should add the 'payment'+paymentId as the id for the new row",function(){
             paymentId = 68;
             const payment = {billAmt:'60',tipAmt:'5',tipPercent:8};
             appendPaymentTable(payment);
             expect(paymentTbody.querySelector('tr').id).toEqual('payment68');
         });
-        
         it("should fill out the row with the inputed payment details",function(){
             const payment = {billAmt:'60',tipAmt:'5',tipPercent:8};
             appendPaymentTable(payment);
@@ -97,7 +99,6 @@ describe("payments Tests", function() {
             expect(row.children[1].innerText).toEqual('$5');
             expect(row.children[2].innerText).toEqual('8%');
         });
-
 
         afterEach(function(){
             paymentTbody.innerText = '';
