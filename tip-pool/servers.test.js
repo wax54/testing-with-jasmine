@@ -35,9 +35,27 @@ describe("Servers test", function() {
   describe("updateServerTable tests", function() {
 
     it("should update the serverTbody to include the new server", function(){
-      expect(serverTbody.innerText).toEqual('Alice	$0.00');
+      expect(serverTbody.children[0].children[0].innerText).toEqual('Alice');
     });
   });
+
+  describe("appendDeleteBtn tests", function() {
+
+    it("should append a td with a value of 'X' to each server row", function(){
+      expect(serverTbody.children[0].children[2].innerText).toEqual('X');
+      expect(serverTbody.children[0].children[2].classList.contains('delButton')).toBe(true);
+    });
+  });
+
+  describe("deleteServer tests", function() {
+
+    it("should remove the table row from the dom and server from allServers", function(){
+      serverTbody.children[0].children[2].click();
+      expect(serverTbody.innerText).toEqual('');
+      expect(Object.keys(allPayments).length).toEqual(0);
+    });
+  });
+
 
   afterEach(function() {
     // teardown logic

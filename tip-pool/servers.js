@@ -50,13 +50,13 @@ function updateServerTable() {
     serverTbody.append(newTr);
   }
 }
+
 /**
  *  Creates a new td with the innerText of 'X' and deleteServer click listener
  *   and appends it to the passed tr
  * 
  * @param {HTMLTableRowElement} tr 
  */
-
 function appendDeleteBtn(tr){
     let newTd = document.createElement('td');
     newTd.innerText = 'X';
@@ -64,6 +64,7 @@ function appendDeleteBtn(tr){
     newTd.addEventListener('click', deleteServer);
     tr.append(newTd);
 }
+
 /**
  * removes the parent tr of the passed event and removes the row's id from allServers
  * 
