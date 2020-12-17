@@ -34,7 +34,7 @@ function submitServerInfo(evt) {
  */
 function updateServerTable() {
   serverTbody.innerHTML = '';
-
+console.log(allServers);
   for (let key in allServers) {
     let curServer = allServers[key];
 
@@ -75,4 +75,5 @@ function deleteServer(evt){
   key = parent.id;
   parent.remove();
   delete allServers[key];
+  updateServerTable();
 }
