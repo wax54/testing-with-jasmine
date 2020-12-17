@@ -22,6 +22,14 @@ describe("Servers test", function() {
       expect(Object.keys(allServers).length).toEqual(2);
       expect(allServers['server' + serverId].serverName).toEqual('Gene Barker');
     });
+    it("should not update anything if the serverNameInput is empty", function () {
+      allServers = {};
+      expect(Object.keys(allServers).length).toEqual(0);
+
+      serverNameInput.value = '';
+      submitServerInfo();
+      expect(Object.keys(allServers).length).toEqual(0);
+    });
   });
 
   describe("updateServerTable tests", function() {
