@@ -58,6 +58,7 @@ function createCurPayment() {
 
 /**
  *  Create table row element and pass to appendTd with input values from curPayment
+ * 
  *  @param { [string,string,number] } curPayment an array that should contain billAmt, tipAmt, and tipPercent
  */
 function appendPaymentTable(curPayment) {
